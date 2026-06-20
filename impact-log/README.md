@@ -3,37 +3,94 @@
 > Capture engineering accomplishments with almost zero effort and build a
 > searchable, **100% local** career history — automatically.
 
-`impact-log` is an AI agent **Skill**. Instead of keeping a work journal by hand,
-you run `/impact-log` and let the AI analyze your current coding session, git
-changes, and conversation to write a structured accomplishment entry for you.
+## Install
 
-It figures out:
+```bash
+# From npm (shortest)
+npx yashpatkar-skills impact-log
 
-- the **problem** you solved
-- the **solution** you built
-- the **technologies** used
-- the **impact** (and time saved, when it can estimate it)
-- the right **category**
+# Or install the whole collection
+npx yashpatkar-skills
 
-Entries are saved to a local JSON file you own. Later, turn them into resume
-bullets, performance-review notes, promotion docs, or interview stories.
+# Or via the skills.sh ecosystem
+npx skills add YashPatkar/skills
+
+# Or straight from GitHub (no npm)
+npx github:YashPatkar/skills
+
+# Or manually — clone and copy the folder
+git clone https://github.com/YashPatkar/skills.git
+cp -r skills/impact-log ~/.claude/skills/        # macOS / Linux
+```
+
+Any of these copy the skill into `~/.claude/skills/impact-log/` (set
+`CLAUDE_SKILLS_DIR` to install elsewhere). Needs **Node 16.7+** to install and
+**Python 3.8+** on your `PATH` to run (standard library only — no `pip install`).
+Then restart Claude Code (or start a new session) and type `/impact-log`. Other
+install targets (Claude Desktop, Cursor, ChatGPT) are covered [below](#more-install-options).
+
+---
+
+## What it does
+
+Instead of keeping a work journal by hand, you run `/impact-log` and let the AI
+read your current coding session, git diff, and conversation to write a
+structured accomplishment entry for you. It infers the **problem** you solved,
+the **solution** you built, the **technologies** used, the **impact** (and time
+saved, when it can estimate it), and the right **category** — then saves it to a
+local file you own. It's AI-first: it only asks a question when it genuinely
+can't infer something, never a form.
+
+Later, turn months of entries into resume bullets, performance-review notes,
+promotion docs, weekly reports, or interview stories.
 
 **Privacy:** all data stays in `~/.impact-log/logs.json` on your machine.
 Nothing is ever uploaded or transmitted.
 
----
+## Example
+
+You finish a feature, then:
+
+```text
+You ▸ /impact-log
+
+impact-log ▸ I found an accomplishment in this session:
+
+  Title    : Task Assignment Automation
+  Category : automation
+  Problem  : Manual task creation took 30+ minutes daily.
+  Solution : Built JWT-authenticated API automation.
+  Impact   : Daily effort dropped to under 5 minutes (~25 hrs/month saved).
+  Tech     : Python, REST API, JWT
+
+  Save this? [Y/n]  ▸ Y
+  ✓ saved 2026-06-20-001
+```
+
+If it can't infer one field (say, time saved), it asks **only that one thing** —
+not five form questions. Then, across all your entries:
+
+```text
+You ▸ /impact-log recent           # last 10 accomplishments
+You ▸ /impact-log search jwt        # full-text search
+You ▸ /impact-log stats
+
+  Total Entries: 37
+  Categories:  Automation 12 · AI 8 · Bug Fixes 7 · Performance 6 · Deployment 4
+  Estimated Time Saved: 143 hours
+
+You ▸ /impact-log export             # writes a resume-ready impact-report.md
+```
 
 ## Commands
 
 | Command | What it does |
 |---|---|
-| `/impact-log` | Analyze the session and save a new accomplishment (asks to confirm; only asks questions when unsure) |
+| `/impact-log` | Analyze the session and save a new accomplishment (confirms before saving; only asks when unsure) |
 | `/impact-log recent` | Show your last 10 entries |
 | `/impact-log search <query>` | Full-text search across all entries |
 | `/impact-log stats` | Totals, category breakdown, estimated time saved |
 | `/impact-log export` | Generate a resume-ready `impact-report.md` |
-
----
 
 ## What's in this skill
 
@@ -44,59 +101,26 @@ impact-log/
   README.md        # this file
 ```
 
-The two files work as a pair: the AI does the thinking (reading your session and
+The files work as a pair: the AI does the thinking (reading your session and
 drafting the entry), and `impact_log.py` does the exact, repeatable work
-(saving, searching, math, export). **Both files install together** — a skill is
-a folder, not a single file.
-
-**Requirement:** Python 3.8+ on your `PATH` (`python` or `python3`). No `pip
-install` needed — it uses only the standard library.
+(saving, searching, math, export). **Both install together** — a skill is a
+folder, not a single file.
 
 ---
 
-## Install
+## More install options
 
-### Quickest: one `npx` command (Claude Code)
+### Claude Code — install location
 
-```bash
-npx yashpatkar-skills impact-log
-```
-
-This copies the skill into `~/.claude/skills/impact-log/` (override with the
-`CLAUDE_SKILLS_DIR` env var). Needs Node 16.7+. Restart Claude Code and type
-`/impact-log`. Run `npx yashpatkar-skills` with no arguments to install
-every skill in the collection.
-
-### Via the skills.sh CLI
-
-```bash
-npx skills add YashPatkar/skills
-```
-
-### Manual: copy the folder (Claude Code)
-
-Copy the `impact-log` folder into a skills directory Claude Code discovers:
-
-- **For all projects:** `~/.claude/skills/impact-log/`
-  (Windows: `C:\Users\<you>\.claude\skills\impact-log\`)
-- **For one project:** `<project>/.claude/skills/impact-log/`
-
-Then `/impact-log` is available. Example (clone this repo, copy the folder):
-
-```bash
-git clone https://github.com/YashPatkar/skills.git
-# macOS / Linux
-mkdir -p ~/.claude/skills && cp -r skills/impact-log ~/.claude/skills/
-```
+`~/.claude/skills/impact-log/` makes it available in **every** project;
+`<project>/.claude/skills/impact-log/` scopes it to one. On Windows the home
+path is `C:\Users\<you>\.claude\skills\impact-log\`. PowerShell manual copy:
 
 ```powershell
-# Windows PowerShell
 git clone https://github.com/YashPatkar/skills.git
 New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
 Copy-Item -Recurse skills\impact-log "$HOME\.claude\skills\"
 ```
-
-Restart Claude Code (or start a new session) and type `/impact-log`.
 
 ### Claude.ai / Claude Desktop (Skills)
 

@@ -1,56 +1,87 @@
 # skills
 
-A collection of AI agent **Skills** I build — reusable playbooks (plus the
-scripts that power them) for tools like Claude Code, Codex, and Cursor.
+AI agent **Skills** for coding assistants like **Claude Code**, **Cursor**, and
+**Codex** — reusable playbooks plus the scripts that power them.
 
-Each skill lives in its own folder with a `SKILL.md` (the agent instructions),
-any supporting code, and a `README.md` explaining what it does and how to
-install it.
+## Install
 
-## Skills
-
-| Skill | What it does |
-|---|---|
-| [impact-log](impact-log/) | Auto-capture engineering accomplishments into a local, searchable career history (resume bullets, reviews, interview stories). |
-
-## Install (one command)
-
-Install every skill into your Claude Code skills directory (`~/.claude/skills/`)
-with `npx` — no clone, no setup, Node 16.7+ only:
+Pick whichever you like — all install into your Claude Code skills directory
+(`~/.claude/skills/`). Needs Node 16.7+.
 
 ```bash
-npx yashpatkar-skills
-```
+# 1) From npm (shortest)
+npx yashpatkar-skills                 # install every skill
+npx yashpatkar-skills impact-log      # install one skill
+npx yashpatkar-skills --list          # list available skills
 
-Install just one, or see what's available:
-
-```bash
-npx yashpatkar-skills impact-log   # install a single skill
-npx yashpatkar-skills --list       # list available skills
-```
-
-Restart Claude Code (or open a new session), then type `/<skill-name>`
-(e.g. `/impact-log`). To install somewhere other than `~/.claude/skills`, set
-`CLAUDE_SKILLS_DIR` first.
-
-### Via the skills.sh CLI
-
-These skills are also installable through the [skills.sh](https://skills.sh)
-ecosystem:
-
-```bash
+# 2) From the skills.sh ecosystem
 npx skills add YashPatkar/skills
-```
 
-### Manual install
+# 3) From GitHub directly (no npm needed)
+npx github:YashPatkar/skills
 
-A skill is a **folder**, not a single file — install the whole folder so its
-scripts come along. Copy the skill folder into `~/.claude/skills/<skill-name>/`:
-
-```bash
+# 4) Manual — clone and copy the folder
 git clone https://github.com/YashPatkar/skills.git
 cp -r skills/impact-log ~/.claude/skills/
 ```
+
+Then restart Claude Code (or open a new session) and type `/<skill-name>`
+— e.g. `/impact-log`. Install elsewhere by setting `CLAUDE_SKILLS_DIR` first.
+
+---
+
+## What this is
+
+A **Skill** is a folder containing a `SKILL.md` (natural-language instructions
+your AI agent reads) plus any helper scripts. Drop it in `~/.claude/skills/` and
+the agent gains a new `/command` — no plugins, no config. Each skill here is
+self-contained and installs as a whole folder (instructions + scripts together).
+
+## Available skills
+
+| Skill | What it does |
+|---|---|
+| [impact-log](impact-log/) | Auto-capture your engineering accomplishments into a **local, searchable** career history — then export resume bullets, review notes, and interview stories. |
+
+### Example: `impact-log` in action
+
+After installing, you just finish some work and run the command — the AI reads
+your session and git diff and drafts the entry for you:
+
+```text
+You ▸ /impact-log
+
+impact-log ▸ I found an accomplishment in this session:
+
+  Title    : Task Assignment Automation
+  Category : automation
+  Problem  : Manual task creation took 30+ minutes daily.
+  Solution : Built JWT-authenticated API automation.
+  Impact   : Daily effort dropped to under 5 minutes (~25 hrs/month saved).
+  Tech     : Python, REST API, JWT
+
+  Save this? [Y/n]  ▸ Y
+  ✓ saved 2026-06-20-001
+```
+
+Later, turn months of work into something useful:
+
+```text
+You ▸ /impact-log stats
+
+  Total Entries: 37
+  Categories:  Automation 12 · AI 8 · Bug Fixes 7 · Performance 6 · Deployment 4
+  Estimated Time Saved: 143 hours
+```
+
+```text
+You ▸ /impact-log export      # writes a resume-ready impact-report.md
+```
+
+See [impact-log/README.md](impact-log/) for full docs and privacy notes (all
+data stays on your machine — nothing is ever uploaded).
+
+---
 
 ## License
 
