@@ -56,7 +56,18 @@ install` needed — it uses only the standard library.
 
 ## Install
 
-### Claude Code (recommended)
+### Quickest: one `npx` command (Claude Code)
+
+```bash
+npx github:YashPatkar/skills impact-log
+```
+
+This copies the skill into `~/.claude/skills/impact-log/` (override with the
+`CLAUDE_SKILLS_DIR` env var). Needs Node 16.7+. Restart Claude Code and type
+`/impact-log`. Run `npx github:YashPatkar/skills` with no arguments to install
+every skill in the collection.
+
+### Manual: copy the folder (Claude Code)
 
 Copy the `impact-log` folder into a skills directory Claude Code discovers:
 

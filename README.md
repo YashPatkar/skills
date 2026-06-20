@@ -13,15 +13,34 @@ install it.
 |---|---|
 | [impact-log](impact-log/) | Auto-capture engineering accomplishments into a local, searchable career history (resume bullets, reviews, interview stories). |
 
-## Installing a skill
+## Install (one command)
+
+Install every skill into your Claude Code skills directory (`~/.claude/skills/`)
+with `npx` — no clone, no setup, Node 16.7+ only:
+
+```bash
+npx github:YashPatkar/skills
+```
+
+Install just one, or see what's available:
+
+```bash
+npx github:YashPatkar/skills impact-log   # install a single skill
+npx github:YashPatkar/skills --list       # list available skills
+```
+
+Restart Claude Code (or open a new session), then type `/<skill-name>`
+(e.g. `/impact-log`). To install somewhere other than `~/.claude/skills`, set
+`CLAUDE_SKILLS_DIR` first.
+
+### Manual install
 
 A skill is a **folder**, not a single file — install the whole folder so its
-scripts come along. See each skill's own README for exact steps. For Claude
-Code, the short version is: copy the skill folder into
-`~/.claude/skills/<skill-name>/`.
+scripts come along. Copy the skill folder into `~/.claude/skills/<skill-name>/`:
 
 ```bash
 git clone https://github.com/YashPatkar/skills.git
+cp -r skills/impact-log ~/.claude/skills/
 ```
 
 ## License

@@ -1,0 +1,30 @@
+{
+  "name": "yashpatkar-skills",
+  "version": "1.0.0",
+  "description": "One-command installer for Yash Patkar's AI agent skills (Claude Code, Codex, Cursor).",
+  "type": "module",
+  "bin": {
+    "install-skills": "bin/install.mjs"
+  },
+  "files": [
+    "bin/",
+    "impact-log/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=16.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YashPatkar/skills.git"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai-skills",
+    "agent-skills",
+    "developer-tools"
+  ],
+  "license": "MIT"
+}
