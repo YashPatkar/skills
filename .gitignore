@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local impact-log data (never commit your personal career history)
+.impact-log/
+logs.json
+impact-report.md
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
