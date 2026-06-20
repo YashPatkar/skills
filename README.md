@@ -19,14 +19,14 @@ Install every skill into your Claude Code skills directory (`~/.claude/skills/`)
 with `npx` — no clone, no setup, Node 16.7+ only:
 
 ```bash
-npx github:YashPatkar/skills
+npx yashpatkar-skills
 ```
 
 Install just one, or see what's available:
 
 ```bash
-npx github:YashPatkar/skills impact-log   # install a single skill
-npx github:YashPatkar/skills --list       # list available skills
+npx yashpatkar-skills impact-log   # install a single skill
+npx yashpatkar-skills --list       # list available skills
 ```
 
 Restart Claude Code (or open a new session), then type `/<skill-name>`

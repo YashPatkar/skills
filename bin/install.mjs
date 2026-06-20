@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // Installs skills from this repo into your Claude Code skills directory.
 //
-//   npx github:YashPatkar/skills            # install every skill
-//   npx github:YashPatkar/skills impact-log # install just one
-//   npx github:YashPatkar/skills --list     # list available skills
+//   npx yashpatkar-skills            # install every skill
+//   npx yashpatkar-skills impact-log # install just one
+//   npx yashpatkar-skills --list     # list available skills
 //
 // Target dir: $CLAUDE_SKILLS_DIR, else ~/.claude/skills
 // No dependencies — Node stdlib only.
