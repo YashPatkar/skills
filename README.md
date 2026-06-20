@@ -33,6 +33,15 @@ Restart Claude Code (or open a new session), then type `/<skill-name>`
 (e.g. `/impact-log`). To install somewhere other than `~/.claude/skills`, set
 `CLAUDE_SKILLS_DIR` first.
 
+### Via the skills.sh CLI
+
+These skills are also installable through the [skills.sh](https://skills.sh)
+ecosystem:
+
+```bash
+npx skills add YashPatkar/skills
+```
+
 ### Manual install
 
 A skill is a **folder**, not a single file — install the whole folder so its

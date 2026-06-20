@@ -67,6 +67,12 @@ This copies the skill into `~/.claude/skills/impact-log/` (override with the
 `/impact-log`. Run `npx yashpatkar-skills` with no arguments to install
 every skill in the collection.
 
+### Via the skills.sh CLI
+
+```bash
+npx skills add YashPatkar/skills
+```
+
 ### Manual: copy the folder (Claude Code)
 
 Copy the `impact-log` folder into a skills directory Claude Code discovers:

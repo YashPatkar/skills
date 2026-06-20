@@ -1,6 +1,6 @@
 {
   "name": "yashpatkar-skills",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "One-command installer for Yash Patkar's AI agent skills (Claude Code, Codex, Cursor).",
   "type": "module",
   "bin": {
